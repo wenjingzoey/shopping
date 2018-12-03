@@ -18,4 +18,5 @@
 #### get -version 查看git版本号
 ####git remote remove origin 仓库地址 删除远程仓库
 #### git remote add origin "远程仓库地址"      关联远程仓库
-#### git push -u -f origin  master     第一次向远程仓库推送
+#### git push -u -f origin  master   第一次向远程仓库推送
+#### git push -u origin master -f    强制推送
