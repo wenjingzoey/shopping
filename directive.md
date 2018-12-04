@@ -1,4 +1,4 @@
-##git 指令
+## git 指令
 #### git config --global user.name "用户名" 
 #### git config --global user.email "邮箱" 
 #### ssh-keygen -t rsa -C "邮箱" 
@@ -16,7 +16,7 @@
 #### git push -u origin master 提交到远程仓库
 #### git merge 被合并的分支       合并分支
 #### get -version 查看git版本号
-####git remote remove origin 仓库地址 删除远程仓库
+#### git remote remove origin 仓库地址 删除远程仓库
 #### git remote add origin "远程仓库地址"      关联远程仓库
 #### git push -u -f origin  master   第一次向远程仓库推送
 #### git push -u origin master -f    强制推送
