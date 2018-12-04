@@ -20,3 +20,20 @@
 #### git remote add origin "远程仓库地址"      关联远程仓库
 #### git push -u -f origin  master   第一次向远程仓库推送
 #### git push -u origin master -f    强制推送
+
+### 远程分支合并dev分支
+  git checkout -b dev  创建出分支并且换到dev分支
+  git push origin head -u 将其推到远程仓库  
+  git add 
+  git commit
+  git push origin dev  提交到远程仓库dev
+  git pull origin dev  拉取数据
+  git checkout master  切换到master
+  git merge dev   合并
+
+
+
+
+
+
+  
