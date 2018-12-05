@@ -6,13 +6,15 @@
 ####    dao层 （与数据库交互）
 
 ## Mybatis-generator插件
- ### 在maven中引入插件
- ### 在generatorConfig.xml中进行配置，引入properties，配置mysql的驱动包jar，它的位置从用户哪里找；
- ### 实体类
- ### 配置sql文件，生成的sql语句放在mapper包
- ### 生成Dao接口
- ### 配置数据表   tableName：你建的表名，domainObjectName：生成的类名
+  ~~~
+  在maven中引入插件
+  在generatorConfig.xml中进行配置，引入properties，配置mysql的驱动包jar，它的位置从用户哪里找；
+  实体类
+  配置sql文件，生成的sql语句放在mapper包
+  生成Dao接口
+ 配置数据表   tableName：你建的表名，domainObjectName：生成的类名
  ~~~
+ ~~~ 
  可以生成dao接口、实体类和映射文件
  ~~~
 
