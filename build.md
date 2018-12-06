@@ -43,6 +43,7 @@ ftpclient 在项目中会搭建图片服务器
 ## 知识点
 ~~~
 mybatis：半自动化框架
+在设计数据库时，某一字段属于一个表，但它又同时出现在另一个或多个表，且完全等同于它在其本来所属表的意义表示，那么这个字段就是一个冗余字段。
 在db.properties中用的是jdbc.username是为了防止服务器默认加载系统的username
 @RestController和@Controller的区别
 @RestController往前端返回的是json数据
