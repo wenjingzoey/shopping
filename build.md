@@ -40,6 +40,48 @@ joda-time  时间格式化 例如：将时间转字符串，将字符串转date
 ftpclient 在项目中会搭建图片服务器
  alipay 集成支付宝所需用的包
 ~~~
+
+### 项目接口
+#### 登录接口 /portal/user/login.do
+~~~
+String username,
+String password；
+
+首先应该进行参数非空校验，然后进行用户名检验，
+看用户名是否存在（用到了check_valid接口），若存在则根据用户名和密码进行查询并对密码进行Md5加密；
+最后进行返回的时候密码置空；
+~~~
+#### 注册接口 /portal/user/register.do
+~~~
+String username,
+String password,
+String email,
+String phone,
+String question,
+String answer
+
+首先进行参数的非空检验，然后是校验是否用户名是唯一的（该用户名是否已存在），
+若不存在则继续校验邮箱是否是唯一的，校验成功之后进行注册并对密码进行Md5加密;
+该接口在校验用户名和邮箱时引用了check_valid接口；
+~~~
+#### 检查用户名是否有效接口/portal/user/check_valid.do
+~~~
+String str,
+String type
+str可以是用户名或邮箱，对应的type是username和email
+
+首先也是进行非空校验，然后是判断用户名和邮箱是否已存在，
+若已存在则是无效的，不存在是有效的可进行注册；
+~~~
+#### 获取登录用户信息接口 /portal/user/get_user_info.do
+~~~
+是在controller控制层写的,是根据在登录界面获得的session值进而获取的用户信息；
+用object接受session的值，进行非空判断以及强制转换把值为空的字段过滤掉
+~~~
+#### 获取用户详细信息接口
+~~~
+跟获取登录用户信息接口是一样的
+~~~
 ## 知识点
 ~~~
 mybatis：半自动化框架
@@ -47,3 +89,6 @@ mybatis：半自动化框架
 在db.properties中用的是jdbc.username是为了防止服务器默认加载系统的username
 @RestController和@Controller的区别
 @RestController往前端返回的是json数据
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL) 当ServerResponse转成json字符串的时候，非空字段不会进行转化（值为空的过滤掉）
+@JsonIgnore ServerResponse转成json字符串把值为success忽略掉
+ 
