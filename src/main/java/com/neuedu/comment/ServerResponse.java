@@ -61,10 +61,10 @@ public static ServerResponse createServerResponseBySucess(){
      */
 
     public static ServerResponse createServerResponseByERROR(){
-        return new ServerResponse(Const.SUCCESS_CODE);
+        return new ServerResponse(Const.SUCCESS_ERROR);
     }
     public static ServerResponse createServerResponseByERROR(String msg){
-        return new ServerResponse(Const.SUCCESS_CODE,msg);
+        return new ServerResponse(Const.SUCCESS_ERROR,msg);
     }
 
     public static ServerResponse createServerResponseByERROR(int status){

@@ -71,4 +71,20 @@ public interface UserInfoMapper {
      *根据用户名和密保问题以及密保答案进行查询
      */
    int selectByUsernameAndPQuestionAndAnswer(@Param("username") String username,@Param("question") String question,@Param("answer") String answer);
+    /**
+     *修改用户密码接口
+     */
+   int updateUserPassword(@Param("username") String username,@Param("password") String newPassword);
+    /**
+     *修改用户密码接口
+     */
+   int updatePasswordByUsername(@Param("username") String username,@Param("password") String passwordNew);
+
+    /**
+     * 登录状态下修改信息
+     * @param userInfo
+     * @return
+     */
+ int updateUserBySelectActive(UserInfo userInfo);
+
 }
