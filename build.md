@@ -78,18 +78,18 @@ str可以是用户名或邮箱，对应的type是username和email
 是在controller控制层写的,是根据在登录界面获得的session值进而获取的用户信息；
 用object接受session的值，进行非空判断以及强制转换把值为空的字段过滤掉
 ~~~
-#### 获取用户详细信息接口
+#### 获取用户详细信息接口 /portal/user/get_inforamtion.do
 ~~~
 跟获取登录用户信息接口是一样的
 ~~~
-#### 根据用户名查找密保问题
+#### 根据用户名查找密保问题 /portal/user/forget_get_question.do?
 ~~~
 String username
 
 首先进行非空校验，然后校验username是否存在，再根据username查找密保问题，
 根据密保问题重置密码是为了防止衡纵向越权
 ~~~
-#### 根据用户名和密保问题以及密保答案进行查询
+#### 根据用户名和密保问题以及密保答案进行查询 /portal/user/forget_check_answer.do
 ~~~
 String username,
 String question,
@@ -99,7 +99,7 @@ String answer
 服务端生成一个token保存并将token返回给客户端  UUID生成的唯一的字符串，
 利用guava cache 做一个guava缓存
 ~~~
-#### 重置密码
+#### 重置密码 /portal/user/forget_reset_password.do
 ~~~
 String username,
 String passwordNew,
@@ -107,7 +107,7 @@ String forgetToken
 
 首先进行非空校验，然后进行token校验，最后进行密码重置
 ~~~
-#### 登录状态下修改密码
+#### 登录状态下修改密码 /portal/user/reset_password.do
 ~~~
 String passwordOld,
 String passwordNew
@@ -115,8 +115,11 @@ String passwordNew
 首先进行非空校验，然后进行旧密码校验，旧密码校验是为了防止横向越权，
 ，然后进行密码的修改。
 ~~~
-#### 管理员登录
+#### 管理员登录 /manage/user/login.do
 ~~~
+String username,
+String password
+
 跟用户登录差不多，不同的是在控制层调用时，进行一个判断，是否是管理员；
 防止纵向越权。
 ~~~
