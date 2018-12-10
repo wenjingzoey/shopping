@@ -11,8 +11,8 @@ public class Const {
     public static final String USERNAME="username";
     public static final String EMAIL ="email";
     public enum RoleEnum {
-        ROLE_ADMIN(0,"普通用户"),
-        ROLE_CUSTOMER(1,"管理员")
+        ROLE_CUSTOMER(0,"普通用户"),
+        ROLE_ADMIN(1,"管理员")
         ;
         private int code;
         private String desc;

@@ -231,7 +231,7 @@ public class UserServiceImpl implements UserService {
 
 
     /**
-     * 登录状态下修改密码
+     * 登录状态下修改个人信息
      * @param user
      * @return
      */

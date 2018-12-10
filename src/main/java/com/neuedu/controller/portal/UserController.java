@@ -1,7 +1,5 @@
 package com.neuedu.controller.portal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.neuedu.comment.Const;
 import com.neuedu.comment.ResponseCode;
 import com.neuedu.comment.ServerResponse;
@@ -10,8 +8,6 @@ import com.neuedu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController

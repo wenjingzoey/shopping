@@ -7,7 +7,9 @@ public enum ResponseCode {
     EXISTS_USERNAME(3,"用户名已存在"),
     EXISTS_EMAIL(4,"邮箱已存在"),
     NOT_EXISTS_USERNAME(5,"用户名不存在"),
-    USER_NOT_LOGIN(6,"用户名未登录");
+    USER_NOT_LOGIN(6,"用户名未登录"),
+    NEED_LOGIN(7,"需要登录"),
+    NO_PRIVILEGE(8,"无权限操作");
     private int status;
     private String msg;
 
