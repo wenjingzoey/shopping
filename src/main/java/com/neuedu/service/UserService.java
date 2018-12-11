@@ -39,4 +39,5 @@ public interface UserService {
     public ServerResponse reset_password(UserInfo user,String passwordOld, String passwordNew);
 
     public ServerResponse update_information(UserInfo user);
+    public UserInfo findUserInfoByUserId(Integer userId);
 }

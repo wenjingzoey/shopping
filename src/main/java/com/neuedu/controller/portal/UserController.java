@@ -123,12 +123,17 @@ public class UserController {
      */
     @RequestMapping(value = "update_information.do")
     public ServerResponse update_information(HttpSession session,UserInfo user){
-        Object o = session.getAttribute(Const.CURRENTUSER);
-        if (o!=null && o instanceof UserInfo){
-            UserInfo userInfo = (UserInfo) o;
-            user.setId(userInfo.getId());
-            return userService.update_information(user);
-        }
-        return ServerResponse.createServerResponseByERROR(ResponseCode.USER_NOT_LOGIN.getStatus(),ResponseCode.USER_NOT_LOGIN.getMsg());
+       UserInfo userInfo = (UserInfo) session.getAttribute(Const.CURRENTUSER);
+       if (userInfo == null){
+           return ServerResponse.createServerResponseByERROR(ResponseCode.USER_NOT_LOGIN.getStatus(),ResponseCode.USER_NOT_LOGIN.getMsg());
+       }
+       user.setId(userInfo.getId());
+       ServerResponse serverResponse = userService.update_information(user);
+       if (serverResponse.isSuccess()){
+           //更新session用户信息
+           UserInfo userInfo1 = userService.findUserInfoByUserId(userInfo.getId());
+           session.setAttribute(Const.CURRENTUSER,userInfo1);
+       }
+        return serverResponse;
     }
 }

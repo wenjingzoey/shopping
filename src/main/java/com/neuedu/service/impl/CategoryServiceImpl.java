@@ -1,5 +1,6 @@
 package com.neuedu.service.impl;
 
+import com.google.common.collect.Sets;
 import com.neuedu.comment.ServerResponse;
 import com.neuedu.dao.CategoryMapper;
 import com.neuedu.pojo.Category;
@@ -8,7 +9,9 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -88,4 +91,40 @@ public class CategoryServiceImpl implements CategoryService {
         //step:4结果
         return ServerResponse.createServerResponseByERROR("修改失败");
     }
+    /**
+     * 获取当前分类id及递归子节点categoryId
+     */
+    @Override
+    public ServerResponse get_deep_category(Integer categoryId) {
+        //step:1非空校验
+        if (categoryId == null || categoryId.equals(" ")){
+            return ServerResponse.createServerResponseByERROR("类别id不能为空");
+        }
+        //step:2查询
+        Set<Category> categorySet = Sets.newHashSet();
+        categorySet=findAllChildCategory(categorySet,categoryId);
+        Set<Integer> integerSet = Sets.newHashSet();
+        Iterator<Category> categoryIterator=  categorySet.iterator();
+         while (categoryIterator.hasNext()){
+             Category category = categoryIterator.next();
+             integerSet.add(category.getId());
+         }
+        return ServerResponse.createServerResponseBySucess(null,integerSet);
+    }
+
+    private Set<Category> findAllChildCategory(Set<Category> categorySet,Integer categoryId) {
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
+        if (category != null) {
+            categorySet.add(category);
+        }
+        //查找categoryId下的子节点（平级）
+        List<Category> categoryList = categoryMapper.findChildCategory(categoryId);
+        if (categoryList != null && categoryList.size() > 0) {
+            for (Category category1 : categoryList) {
+                findAllChildCategory(categorySet, category1.getId());
+            }
+        }
+        return categorySet;
+    }
+
 }

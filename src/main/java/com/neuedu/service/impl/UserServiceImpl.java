@@ -248,4 +248,9 @@ public class UserServiceImpl implements UserService {
         }
         return ServerResponse.createServerResponseByERROR("修改失败");
     }
+
+    @Override
+    public UserInfo findUserInfoByUserId(Integer userId) {
+        return userInfoMapper.selectByPrimaryKey(userId);
+    }
 }
