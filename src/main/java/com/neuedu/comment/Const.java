@@ -66,4 +66,31 @@ public class Const {
             this.desc = desc;
         }
     }
+    public enum CartCheckEnum{
+        CART_CHECK(1,"已勾选"),
+        CART_ON_CHECK(0,"未勾选")
+        ;
+        private int code;
+        private String desc;
+        private CartCheckEnum(int code, String desc) {
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+    }
 }

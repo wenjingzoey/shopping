@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
      }
        //step:2 设置商品主图sub_images --> 1.jpg  2.jpg
         String subImages=product.getSubImages();
-     if (subImages != null && subImages.equals("")){
+     if (subImages != null && !subImages.equals("")){
          String[] subImageArr = subImages.split(",");
          if (subImageArr.length>0){
              //设置产品主图
@@ -149,7 +149,7 @@ public class ProductServiceImpl implements ProductService {
         ProductDetailVO productDetailVO = new ProductDetailVO();
         productDetailVO.setCategoryId(product.getCategoryId());
         productDetailVO.setCreateTime(DateUtil.dateToStr(product.getCreateTime()));
-        productDetailVO.setDetail(product.getDetall());
+        productDetailVO.setDetail(product.getDetail());
         productDetailVO.setImageHost(PropertiesUtils.readByKey("imageHost"));
         productDetailVO.setName(product.getName());
         productDetailVO.setMainImage(product.getMainImage());
@@ -175,7 +175,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ServerResponse search(Integer productId, String productName, Integer pageNum, Integer pageSize) {
      PageHelper.startPage(pageNum,pageSize);
-     if (productName!= null && productName.equals("")){
+     if (productName!= null && !productName.equals("")){
          productName="%"+productName+"%";
      }
     List<Product> productList = productMapper.findProductByProductIdAndProductName(productId,productName);
@@ -269,7 +269,7 @@ public class ProductServiceImpl implements ProductService {
             }
         }
         //step:3 keyword
-        if (keyword!=null&&keyword.equals("")){
+        if (keyword!=null&&!keyword.equals("")){
             keyword ="%"+keyword+"%";
         }
         if (orderBy.equals("")) {
